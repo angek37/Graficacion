@@ -1,9 +1,11 @@
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from OpenGL.GL import *
-import sys
+import Funcion
 
 name = 'Grafica'
+
+Ar = Funcion.P
 
 def main():
     glutInit(sys.argv)
@@ -30,3 +32,5 @@ def display():
     return
 
 if __name__ == '__main__': main()
+
+

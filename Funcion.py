@@ -8,8 +8,10 @@ x = Symbol('x')
 # print(resultado)
 #
 
+inp = input("Ingrese la expresión: ")
+
 try:
-    expr = (x ** 2)
+    expr = (eval(inp))
 except NameError:
     print("El nombre de la variable no es correcto")
     exit(0)
@@ -18,8 +20,9 @@ l = 40
 
 P = [[0]*2 for i in range(l)]
 
+pprint(expr)
+
 for i in range(-20, 20):
     P[i + 20][0] = i
     P[i + 20][1] = expr.subs('x', i)
-
 
