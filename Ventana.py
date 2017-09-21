@@ -1,36 +1,48 @@
-from OpenGL.GLUT import *
-from OpenGL.GLU import *
-from OpenGL.GL import *
+import OpenGL
 import Funcion
 
-name = 'Grafica'
+OpenGL.ERROR_ON_COPY = True
 
-Ar = Funcion.P
+from OpenGL.GLUT import *
+from OpenGL.GL import *
+from OpenGL.GLU import *
 
-def main():
-    glutInit(sys.argv)
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH)
-    glutInitWindowSize(400,400)
-    glutCreateWindow(name)
+points = Funcion.P
 
-    glutDisplayFunc(display)
+def init2D(r, g, b):
+    glClearColor(r, g, b, 0.0)
     glMatrixMode(GL_PROJECTION)
-    gluPerspective(40.,1.,1.,40.)
-    glMatrixMode(GL_MODELVIEW)
-    gluLookAt(0,0,10,
-              0,0,0,
-              0,1,0)
-    glPushMatrix()
-    glutMainLoop()
-    return
+    gluOrtho2D(0.0, 200.0, 0.0, 150.0)
+
 
 def display():
-    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
-    glPushMatrix()
-    glPopMatrix()
-    glutSwapBuffers()
-    return
+    glClear(GL_COLOR_BUFFER_BIT)
+    glColor3f(255.0, 255.0, 255.0)
 
-if __name__ == '__main__': main()
+    # draw two points
+    glBegin(GL_POINTS)
+    print("Puntos (x, y)")
+    for i in range(0, len(points)):
+        print(int((points[i][0])), int((points[i][1])))
+        glVertex2i(int((points[i][0])), int((points[i][1])))
+    glEnd()
+
+    # draw a line
+    # glBegin(GL_LINES)
+    # glVertex2i(0, 0)
+    # glVertex2i(500, 250)
+    # glEnd()
+
+    glFlush()
+
+
+glutInit(sys.argv)
+glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB)
+glutInitWindowSize(500, 500)
+glutInitWindowPosition(100, 100)
+glutCreateWindow('Grafica')
+init2D(0.0, 0.0, 0.0)
+glutDisplayFunc(display)
+glutMainLoop()
 
 
