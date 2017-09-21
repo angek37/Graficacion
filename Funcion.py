@@ -9,6 +9,14 @@ x = Symbol('x')
 #
 
 inp = input("Ingrese la expresión: ")
+points = input("¿Cuántos puntos desea dibujar? (Minimo 40): ")
+
+if(int(points) < 40):
+    print("Se dibujaran 40")
+    points = '40'
+
+if((int(points) % 2) != 0):     ## Verifica que sea par
+    points = str(int(points)+1)
 
 try:
     expr = (eval(inp))
@@ -16,13 +24,13 @@ except NameError:
     print("El nombre de la variable no es correcto")
     exit(0)
 
-l = 40
+l = int(points)
 
 P = [[0]*2 for i in range(l)]
 
 pprint(expr)
 
-for i in range(-20, 20):
-    P[i + 20][0] = i
-    P[i + 20][1] = expr.subs('x', i)
+for i in range(int(l/-2), int(l/2)):
+    P[i + int(l/2)][0] = i
+    P[i + int(l/2)][1] = expr.subs('x', i)
 
