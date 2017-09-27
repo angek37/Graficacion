@@ -11,7 +11,7 @@ class Window(object):
         glutCreateWindow(name)
         glutInitWindowSize(high, width)
         glutInitWindowPosition(pos, pos)
-        glutDisplayFunc(self.display())
+        glutDisplayFunc(self.display)
 
 class window2(object):
     def display(self):
@@ -21,7 +21,7 @@ class window2(object):
         glutInit([])
         glutInitWindowSize(width, high)
         glutCreateWindow(name)
-        glutDisplayFunc(self.display())
+        glutDisplayFunc(self.display)
         glutMainLoop()
 
 class Wanimation(object):
@@ -35,6 +35,6 @@ class Wanimation(object):
         glutInit([])
         glutInitWindowSize(width, high)
         glutCreateWindow(name)
-        glutDisplayFunc(self.display())
-        glutIdleFunc(self.AnimationStep())
+        glutDisplayFunc(self.display)
+        glutIdleFunc(self.AnimationStep)
         glutMainLoop()
