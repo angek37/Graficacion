@@ -9,14 +9,27 @@ from time import sleep
 
 x = 0.0
 y = 0.0
+flag = 0
 
 class Cuad(Wanimation):
     def AnimationStep(self):
         global y
         global x
+        global flag
         frameRate = 50
-        x += 0.01
-        y = x
+
+        if x < 1 and flag == 0:
+            x += 0.01
+            y = x
+        else:
+            flag = 1
+
+        if x > -1 and flag == 1:
+            x -= 0.01
+            y = x
+        else:
+            flag = 0
+
         sleep(1 / float(frameRate))
         glutPostRedisplay( )
 
